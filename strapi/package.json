@@ -1,0 +1,30 @@
+{
+  "name": "acumen-playbook-strapi",
+  "version": "0.1.0",
+  "description": "Acumen Sales Handbook — Strapi 5 CMS",
+  "private": true,
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "@strapi/strapi": "^5.0.0",
+    "@strapi/plugin-users-permissions": "^5.0.0",
+    "@strapi/plugin-i18n": "^5.0.0",
+    "pg": "^8.11.3",
+    "better-sqlite3": "^9.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "strapi": {
+    "uuid": "acumen-playbook-strapi-uuid-v5"
+  }
+}

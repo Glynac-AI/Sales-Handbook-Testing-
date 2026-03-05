@@ -1,0 +1,41 @@
+{
+    "kind": "collectionType",
+    "collectionName": "proof_points",
+    "info": {
+        "singularName": "proof-point",
+        "pluralName": "proof-points",
+        "displayName": "Proof Point"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "claim": {
+            "type": "string",
+            "required": true
+        },
+        "evidence": {
+            "type": "richtext"
+        },
+        "source": {
+            "type": "string"
+        },
+        "compliance_safe_language": {
+            "type": "richtext"
+        },
+        "do_not_say": {
+            "type": "json"
+        },
+        "related_product": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::product.product"
+        },
+        "related_objection": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::objection.objection",
+            "inversedBy": "proof_points"
+        }
+    }
+}

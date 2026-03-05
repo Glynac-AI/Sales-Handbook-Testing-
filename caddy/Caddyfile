@@ -1,0 +1,36 @@
+{$DOMAIN:localhost} {
+    # Compression
+    encode gzip
+
+    # Security headers applied to all responses
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy strict-origin-when-cross-origin
+        X-XSS-Protection "1; mode=block"
+        -Server
+    }
+
+    # Structured JSON access logs
+    log {
+        output stdout
+        format json
+    }
+
+    # Strapi admin panel and REST/GraphQL API
+    handle /strapi/* {
+        uri strip_prefix /strapi
+        reverse_proxy strapi:1337
+    }
+
+    # Sync service webhook endpoint
+    handle /api/sync/* {
+        uri strip_prefix /api/sync
+        reverse_proxy sync-service:3001
+    }
+
+    # Wiki.js — catch-all default route
+    handle /* {
+        reverse_proxy wikijs:3000
+    }
+}

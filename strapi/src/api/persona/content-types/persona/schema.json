@@ -1,0 +1,34 @@
+{
+    "kind": "collectionType",
+    "collectionName": "personas",
+    "info": {
+        "singularName": "persona",
+        "pluralName": "personas",
+        "displayName": "Persona"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "key_concerns": {
+            "type": "json"
+        },
+        "decision_criteria": {
+            "type": "richtext"
+        },
+        "related_products": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::product.product",
+            "inversedBy": "target_personas"
+        }
+    }
+}

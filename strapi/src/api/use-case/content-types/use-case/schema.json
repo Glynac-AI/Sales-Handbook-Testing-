@@ -1,0 +1,37 @@
+{
+    "kind": "collectionType",
+    "collectionName": "use_cases",
+    "info": {
+        "singularName": "use-case",
+        "pluralName": "use-cases",
+        "displayName": "Use Case"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "problem_statement": {
+            "type": "richtext"
+        },
+        "why_it_matters": {
+            "type": "richtext"
+        },
+        "success_criteria": {
+            "type": "json"
+        },
+        "related_product": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::product.product"
+        },
+        "related_persona": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::persona.persona"
+        }
+    }
+}

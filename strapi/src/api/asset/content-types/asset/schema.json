@@ -1,0 +1,57 @@
+{
+    "kind": "collectionType",
+    "collectionName": "assets",
+    "info": {
+        "singularName": "asset",
+        "pluralName": "assets",
+        "displayName": "Asset"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "file": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "files",
+                "videos",
+                "images"
+            ]
+        },
+        "file_type": {
+            "type": "enumeration",
+            "enum": [
+                "pdf",
+                "pptx",
+                "docx",
+                "image",
+                "video",
+                "spreadsheet"
+            ]
+        },
+        "related_product": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::product.product"
+        },
+        "related_objection": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::objection.objection"
+        },
+        "related_talk_track": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::talk-track.talk-track"
+        }
+    }
+}

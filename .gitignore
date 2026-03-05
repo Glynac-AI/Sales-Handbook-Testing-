@@ -1,0 +1,46 @@
+# Environment secrets — never commit
+.env
+*.env.local
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+build/
+.cache/
+**/dist/
+**/build/
+
+# Strapi
+strapi/.strapi/
+strapi/public/uploads/
+
+# Logs
+*.log
+logs/
+**/logs/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker volumes (if accidentally bound locally)
+postgres_data/
+redis_data/
+rabbitmq_data/
+
+# Backup files
+backups/
+*.gz
+*.tar
+
+# TypeScript compiled output
+*.js.map

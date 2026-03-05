@@ -1,0 +1,62 @@
+{
+    "kind": "collectionType",
+    "collectionName": "objections",
+    "info": {
+        "singularName": "objection",
+        "pluralName": "objections",
+        "displayName": "Objection"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "objection_text": {
+            "type": "string",
+            "required": true
+        },
+        "root_cause": {
+            "type": "richtext"
+        },
+        "response_script": {
+            "type": "richtext"
+        },
+        "do_not_say": {
+            "type": "json"
+        },
+        "stage": {
+            "type": "enumeration",
+            "enum": [
+                "prospecting",
+                "discovery",
+                "proposal",
+                "negotiation",
+                "close"
+            ]
+        },
+        "effectiveness_score": {
+            "type": "integer",
+            "min": 0,
+            "max": 100,
+            "default": 50
+        },
+        "last_used": {
+            "type": "datetime"
+        },
+        "proof_points": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::proof-point.proof-point",
+            "mappedBy": "related_objection"
+        },
+        "related_product": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::product.product"
+        },
+        "related_persona": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::persona.persona"
+        }
+    }
+}

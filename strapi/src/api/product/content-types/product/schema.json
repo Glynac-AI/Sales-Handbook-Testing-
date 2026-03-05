@@ -1,0 +1,34 @@
+{
+    "kind": "collectionType",
+    "collectionName": "products",
+    "info": {
+        "singularName": "product",
+        "pluralName": "products",
+        "displayName": "Product"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "description": {
+            "type": "richtext"
+        },
+        "positioning": {
+            "type": "richtext"
+        },
+        "key_features": {
+            "type": "json"
+        },
+        "target_personas": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::persona.persona",
+            "mappedBy": "related_products"
+        }
+    }
+}

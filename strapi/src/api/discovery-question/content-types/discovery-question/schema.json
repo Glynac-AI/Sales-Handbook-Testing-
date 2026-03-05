@@ -1,0 +1,53 @@
+{
+    "kind": "collectionType",
+    "collectionName": "discovery_questions",
+    "info": {
+        "singularName": "discovery-question",
+        "pluralName": "discovery-questions",
+        "displayName": "Discovery Question"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "question": {
+            "type": "string",
+            "required": true
+        },
+        "intent": {
+            "type": "richtext"
+        },
+        "why_ask": {
+            "type": "richtext"
+        },
+        "follow_up_questions": {
+            "type": "json"
+        },
+        "signals_to_listen_for": {
+            "type": "json"
+        },
+        "stage": {
+            "type": "enumeration",
+            "enum": [
+                "prospecting",
+                "discovery",
+                "proposal"
+            ]
+        },
+        "related_product": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::product.product"
+        },
+        "related_persona": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::persona.persona"
+        },
+        "related_use_case": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::use-case.use-case"
+        }
+    }
+}

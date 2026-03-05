@@ -1,0 +1,50 @@
+{
+    "kind": "collectionType",
+    "collectionName": "talk_tracks",
+    "info": {
+        "singularName": "talk-track",
+        "pluralName": "talk-tracks",
+        "displayName": "Talk Track"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "opener": {
+            "type": "richtext"
+        },
+        "narrative": {
+            "type": "richtext"
+        },
+        "transitions": {
+            "type": "json"
+        },
+        "close": {
+            "type": "richtext"
+        },
+        "related_objections": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::objection.objection"
+        },
+        "related_discovery_questions": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::discovery-question.discovery-question"
+        },
+        "related_product": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::product.product"
+        },
+        "related_persona": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::persona.persona"
+        }
+    }
+}
