@@ -21,15 +21,17 @@ const logger = createLogger('sync.service');
 
 const IDEMPOTENCY_TTL_SECONDS = 86400; // 24 hours
 
-const SUPPORTED_MODELS = new Set<StrapiModelName>([
+type SupportedModelName = 'objection' | 'discovery-question' | 'talk-track' | 'case-study';
+
+const SUPPORTED_MODELS = new Set<SupportedModelName>([
     'objection',
     'discovery-question',
     'talk-track',
     'case-study',
 ]);
 
-function isSupportedModel(model: string): model is StrapiModelName {
-    return SUPPORTED_MODELS.has(model as StrapiModelName);
+function isSupportedModel(model: string): model is SupportedModelName {
+    return SUPPORTED_MODELS.has(model as SupportedModelName);
 }
 
 /**
@@ -142,7 +144,7 @@ export async function processWebhook(payload: StrapiWebhookPayload): Promise<voi
 }
 
 function resolveTransformer(
-    model: StrapiModelName,
+    model: SupportedModelName,
     entry: StrapiEntry & Record<string, unknown>,
 ): { path: string; title: string; content: string } {
     switch (model) {

@@ -1,4 +1,4 @@
-import amqplib, { type Channel, type Connection } from 'amqplib';
+import amqplib from 'amqplib';
 import { v4 as uuidv4 } from 'uuid';
 import { rabbitmqUrl } from '../config';
 import { createLogger } from '../utils/logger';
@@ -10,8 +10,11 @@ const EXCHANGE_NAME = 'playbook_events';
 const EXCHANGE_TYPE = 'topic';
 const DLQ_NAME = 'playbook_dlq';
 
-let connection: Connection | null = null;
-let channel: Channel | null = null;
+type AmqpConnection = Awaited<ReturnType<typeof amqplib.connect>>;
+type AmqpChannel = Awaited<ReturnType<AmqpConnection['createChannel']>>;
+
+let connection: AmqpConnection | null = null;
+let channel: AmqpChannel | null = null;
 
 export async function connectPublisher(): Promise<void> {
     const conn = await amqplib.connect(rabbitmqUrl);
