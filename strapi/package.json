@@ -10,15 +10,13 @@
     "strapi": "strapi"
   },
   "engines": {
-    "node": ">=18.0.0 <=22.x.x",
+    "node": ">=20.0.0 <=24.x.x",
     "npm": ">=6.0.0"
   },
   "dependencies": {
-    "@strapi/strapi": "^5.0.0",
-    "@strapi/plugin-users-permissions": "^5.0.0",
-    "@strapi/plugin-i18n": "^5.0.0",
-    "pg": "^8.11.3",
-    "better-sqlite3": "^9.4.3"
+    "@strapi/strapi": "5.38.0",
+    "@strapi/plugin-users-permissions": "5.38.0",
+    "pg": "^8.11.3"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

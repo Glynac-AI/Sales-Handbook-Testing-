@@ -5,10 +5,5 @@ export default ({ env }: { env: (key: string, defaultValue?: string) => string }
             jwtSecret: env('JWT_SECRET'),
         },
     },
-    'plugin::i18n': {
-        enabled: true,
-        config: {
-            defaultLocale: 'en',
-        },
-    },
 });
+
