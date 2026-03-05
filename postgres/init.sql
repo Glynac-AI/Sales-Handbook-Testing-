@@ -2,15 +2,14 @@
 -- Acumen Playbook — PostgreSQL Initialization Script
 -- =============================================================================
 -- This script runs as the postgres superuser on first container start.
--- IMPORTANT: Replace STRAPI_USER_PASSWORD and WIKIJS_USER_PASSWORD with the
--- same values you set in .env for STRAPI_DB_PASSWORD and WIKIJS_DB_PASSWORD
--- before first boot. These values CANNOT be read from env at this stage.
+-- Run scripts/setup.sh before first boot — it auto-patches the passwords below.
+-- Do NOT edit the passwords manually; setup.sh will overwrite them.
 -- =============================================================================
 
 -- -----------------------------------------------------------------------------
 -- Strapi Database
 -- -----------------------------------------------------------------------------
-CREATE USER strapi_user WITH PASSWORD 'STRAPI_USER_PASSWORD';
+CREATE USER strapi_user WITH PASSWORD 'STRAPI_USER_PASSWORD'; -- STRAPI
 
 CREATE DATABASE acumen_strapi
     WITH OWNER = strapi_user
@@ -39,7 +38,7 @@ CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 -- -----------------------------------------------------------------------------
 -- Wiki.js Database
 -- -----------------------------------------------------------------------------
-CREATE USER wikijs_user WITH PASSWORD 'WIKIJS_USER_PASSWORD';
+CREATE USER wikijs_user WITH PASSWORD 'WIKIJS_USER_PASSWORD'; -- WIKIJS
 
 CREATE DATABASE acumen_wikijs
     WITH OWNER = wikijs_user
