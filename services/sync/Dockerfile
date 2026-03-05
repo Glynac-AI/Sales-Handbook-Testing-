@@ -7,8 +7,8 @@ FROM node:22-alpine AS build
 
 WORKDIR /build
 
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json ./
+RUN npm install
 
 COPY tsconfig.json ./
 COPY src/ ./src/
@@ -23,8 +23,8 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Only copy prod deps
-COPY package.json package-lock.json ./
-RUN npm ci --only=production && npm cache clean --force
+COPY package.json ./
+RUN npm install --omit=dev && npm cache clean --force
 
 # Copy compiled output
 COPY --from=build /build/dist ./dist
