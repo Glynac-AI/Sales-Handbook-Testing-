@@ -1,10 +1,16 @@
 {
-    "extends": "@strapi/typescript-utils/tsconfigs/server",
     "compilerOptions": {
+        "target": "ES2019",
+        "module": "CommonJS",
+        "moduleResolution": "node",
         "outDir": "dist",
         "rootDir": ".",
         "sourceMap": true,
-        "strict": false
+        "strict": false,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true
     },
     "include": [
         "./src/**/*",

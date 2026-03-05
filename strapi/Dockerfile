@@ -1,9 +1,9 @@
 # =============================================================================
 # Production Dockerfile for Strapi 5
-# Based on: docs.strapi.io/cms/installation/docker
 # =============================================================================
-FROM node:20-alpine AS build
+FROM node:20-alpine
 
+# Install system dependencies required for native node modules + wget for healthcheck
 RUN apk update && apk add --no-cache \
     build-base \
     gcc \
@@ -14,28 +14,28 @@ RUN apk update && apk add --no-cache \
     nasm \
     bash \
     vips-dev \
-    git
+    git \
+    wget
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
-WORKDIR /opt/
+WORKDIR /opt/app
 
+# Install dependencies
 COPY package.json ./
-
 RUN npm config set fetch-retry-maxtimeout 600000 -g && \
     npm install
 
-ENV PATH=/opt/node_modules/.bin:$PATH
-
-WORKDIR /opt/app
-
+# Copy application source
 COPY . .
 
+# Set correct ownership
 RUN chown -R node:node /opt/app
 
 USER node
 
+# Build Strapi admin panel
 RUN npm run build
 
 EXPOSE 1337
