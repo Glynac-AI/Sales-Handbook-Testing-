@@ -134,7 +134,7 @@ services:
   caddy:
     image: caddy:2-alpine
     ports:
-      - "80:80"
+      - "88:80"
       - "443:443"
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
