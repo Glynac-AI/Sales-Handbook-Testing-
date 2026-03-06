@@ -90,7 +90,7 @@ services:
     volumes:
       - wikijs_data:/wiki/data
     healthcheck:
-      test: [ "CMD-SHELL", "node -e \"require('http').get('http://localhost:3000/healthz', (r) => process.exit(0)).on('error', () => process.exit(1))\"" ]
+      test: [ "CMD-SHELL", "node -e \"require('http').get('http://127.0.0.1:3000/healthz', (r) => process.exit(0)).on('error', () => process.exit(1))\"" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -135,7 +135,7 @@ services:
     image: caddy:2-alpine
     ports:
       - "88:80"
-      - "443:443"
+      - "4443:443"
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
