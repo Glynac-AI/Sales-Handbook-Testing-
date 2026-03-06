@@ -19,7 +19,6 @@ http://:80 {
 
     # Strapi admin panel and REST/GraphQL API
     handle /strapi/* {
-        uri strip_prefix /strapi
         reverse_proxy strapi:1337
     }
 

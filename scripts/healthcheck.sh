@@ -65,9 +65,9 @@ check_rabbitmq() {
   echo "\"${name}\": {\"status\": \"${status}\"$([ -n "${message}" ] && echo ", \"message\": \"${message}\"" || echo "")}"
 }
 
-STRAPI=$(check_http "strapi" "http://localhost/strapi/_health" 2>&1 || echo '"strapi": {"status": "error", "message": "check failed"}')
-WIKIJS=$(check_http "wikijs" "http://localhost/healthz" 2>&1 || echo '"wikijs": {"status": "error", "message": "check failed"}')
-SYNC=$(check_http "sync-service" "http://localhost/api/sync/health" 2>&1 || echo '"sync-service": {"status": "error", "message": "check failed"}')
+STRAPI=$(check_http "strapi" "http://localhost:88/strapi/_health" 2>&1 || echo '"strapi": {"status": "error", "message": "check failed"}')
+WIKIJS=$(check_http "wikijs" "http://localhost:88/healthz" 2>&1 || echo '"wikijs": {"status": "error", "message": "check failed"}')
+SYNC=$(check_http "sync-service" "http://localhost:88/api/sync/health" 2>&1 || echo '"sync-service": {"status": "error", "message": "check failed"}')
 POSTGRES=$(check_postgres "postgres" 2>&1 || echo '"postgres": {"status": "error", "message": "check failed"}')
 REDIS=$(check_redis "redis" 2>&1 || echo '"redis": {"status": "error", "message": "check failed"}')
 RABBITMQ=$(check_rabbitmq "rabbitmq" 2>&1 || echo '"rabbitmq": {"status": "error", "message": "check failed"}')
