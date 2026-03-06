@@ -66,7 +66,7 @@ services:
     volumes:
       - strapi_uploads:/opt/app/public/uploads
     healthcheck:
-      test: [ "CMD-SHELL", "wget -qO- http://localhost:1337/strapi/_health || exit 1" ]
+      test: [ "CMD-SHELL", "wget -qO- http://localhost:1337/_health || exit 1" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -105,7 +105,7 @@ services:
   sync-service:
     build: ./services/sync
     environment:
-      STRAPI_URL: http://strapi:1337/strapi
+      STRAPI_URL: http://strapi:1337
       STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
       WIKIJS_URL: http://wikijs:3000
       WIKIJS_API_TOKEN: ${WIKIJS_API_TOKEN}
