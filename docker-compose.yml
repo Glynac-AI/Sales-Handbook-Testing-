@@ -90,7 +90,7 @@ services:
     volumes:
       - wikijs_data:/wiki/data
     healthcheck:
-      test: [ "CMD-SHELL", "wget -qO- http://localhost:3000/healthz || exit 1" ]
+      test: [ "CMD-SHELL", "wget -S http://localhost:3000/healthz 2>&1 | grep -q 'HTTP/' || exit 1" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -141,9 +141,10 @@ services:
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
-      - strapi
-      - wikijs
-      - sync-service
+      strapi:
+        condition: service_healthy
+      wikijs:
+        condition: service_started
     networks:
       - playbook_net
     restart: unless-stopped
