@@ -1,4 +1,4 @@
-:80 {
+http://:80 {
     # Compression
     encode gzip
 
