@@ -90,7 +90,7 @@ services:
     volumes:
       - wikijs_data:/wiki/data
     healthcheck:
-      test: [ "CMD-SHELL", "wget -S http://localhost:3000/healthz 2>&1 | grep -q 'HTTP/' || exit 1" ]
+      test: [ "CMD-SHELL", "node -e \"require('http').get('http://localhost:3000/healthz', (r) => process.exit(0)).on('error', () => process.exit(1))\"" ]
       interval: 30s
       timeout: 10s
       retries: 5
